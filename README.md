@@ -1,7 +1,1 @@
-# README.md template
-
-# Usage
-
-# Installation
-
-# What I learned
+# Basic scripts I use for automation.
