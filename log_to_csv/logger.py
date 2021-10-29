@@ -85,7 +85,7 @@ def handle_arguments(argv):
                     if len(argv) >= 3:
                         try:
                             int(argv[2])
-                            log_meditation(argv[1], argv[2].capitalize())
+                            log_meditation(argv[1].capitalize(), argv[2])
                         except:
                             print("must provide integer value for minutes_spent")
                     else:
