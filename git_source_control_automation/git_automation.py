@@ -1,18 +1,6 @@
-# import pygame
-# from pygame.locals import *
-# from gtts import gTTS
 import os, sys, subprocess
-# from button import Button
-# from text import draw_text
-# from math import ceil
-
 
 cmd_args = []
-
-
-# subprocess.run("ls")
-
-
 
 def get_git_status():
     git_status = subprocess.run("git status", stdout=subprocess.PIPE, shell=True)
@@ -38,17 +26,10 @@ def git_commit_all(commit_message="automated commit message"):
     
     git_push()
 
-
-
-
-
 status = get_git_status()
 
 if "untracked" in status:
-    git_add = subprocess.run("git add *", stdout=subprocess.PIPE, shell=True)
-    print("added untracked files.")
-    git_add = subprocess.run('git commit -m "automated commit using script"', stdout=subprocess.PIPE, shell=True)
-    git_push = subprocess.run('git push')
+    git_commit_all()
     print(get_git_status())
 
 if "branch is ahead" in status:
@@ -66,18 +47,3 @@ if "up to date" in status:
 if "behind" in status:
     print('repository is behind. need to pull from master/main branch')
     git_pull()
-
-# print(git_status)
-
-# result = subprocess.run("python ./openrelax.py", stdout=subprocess.PIPE, shell=True)
-# print(result.stdout.decode())
-# print(result)
-
-# status = subprocess.run("python ./openrelax.py", stdout=subprocess.PIPE, shell=True)
-# print(result.stdout.decode())
-
-
-
-
-# result = subprocess.run("python helloworld.py", stdout=subprocess.PIPE, shell=True)
-# print(result.stdout.decode())
