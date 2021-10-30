@@ -8,11 +8,14 @@ def get_project_directory():
 
     path = [""]
     i = 0
+    backslash_count = SCRIPTPATH.count("\\")
+    print(backslash_count)
+
     for char in SCRIPTPATH:
         if "\\" == char:
             i += 1
         # print(path)
-        if i != 2:
+        if i != backslash_count:
             path[0] += char
 
     # print(path)

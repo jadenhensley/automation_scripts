@@ -10,24 +10,19 @@ import csv
 
 import subprocess
 
-def read_csv():
-    with open("./totalhours_coding.csv", newline="", mode="r") as csv_hours:
-        reader = csv.reader(csv_hours, delimiter=',', quotechar="'")
-        for row in reader:
-            print(row)
-
-def log_hours():
-    with open("./totalhours_coding.csv", newline="", mode="a") as csv_hours:
-        writer = csv.writer(csv_hours, delimiter=',', quotechar="'")
-        writer.writerow(['"coding session"', 2])
+WORKOUT_PROGRAM_PATH='P:\\automation_scripts\workout_timer_tts\workout.py'
+# 'P:\\automation_scripts\programmable_timer\workout_timer_tts'
+MEDITATION_PROGRAM_PATH='P:\libre_mind_meditation\libremind.py'
+LOGGER_PROGRAM_PATH=''
+BACKGROUND_NOISES_PROGRAM_PATH=''
 
 
 def launch_meditation():
-    background_noise_process = subprocess.run("python ./meditation.py", stdout=subprocess.PIPE, shell=True)
+    background_noise_process = subprocess.run(f"python {MEDITATION_PROGRAM_PATH}", stdout=subprocess.PIPE, shell=True)
     return "done"
 
 def launch_workout():
-    background_exercise_process = subprocess.run("python ./workout.py", stdout=subprocess.PIPE, shell=True)
+    background_exercise_process = subprocess.run(f"python {WORKOUT_PROGRAM_PATH}", stdout=subprocess.PIPE, shell=True)
     return "done"
 
 FONT = pygame.font.SysFont("Sans", 72)
@@ -67,7 +62,7 @@ class Clock():
         if self.finished:
             screen.blit(FONT.render("Finished", True, (0,255,0)), (20, 80))
             if self.action_cap == 0:
-                log_hours()
+                # log_hours()
                 screen.fill((255,255,255))
                 screen.blit(FONT.render("Hours logged", True, (0,255,0)), (20, 80))
                 self.action_cap = 2
@@ -137,7 +132,7 @@ def main():
         pygame.display.update()
         clock.tick(60)
 
-read_csv()
+# read_csv()
 # append_row()
 
 main()    
