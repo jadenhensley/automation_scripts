@@ -11,6 +11,10 @@ import csv
 
 import subprocess
 
+import path_util  # needed for getting path of project media files, when script is ran remotely.
+
+PROJECT_PATH = path_util.get_project_directory()
+print(PROJECT_PATH)
 
 # text = "Take a short rest."
 # audiopath = "./sounds/rest.mp3"
@@ -21,13 +25,13 @@ import subprocess
 
 
 def read_csv():
-    with open("./totalhours_coding.csv", newline="", mode="r") as csv_hours:
+    with open(f"{PROJECT_PATH}./totalhours_coding.csv", newline="", mode="r") as csv_hours:
         reader = csv.reader(csv_hours, delimiter=',', quotechar="'")
         for row in reader:
             print(row)
 
 def log_hours():
-    with open("./totalhours_coding.csv", newline="", mode="a") as csv_hours:
+    with open(f"{PROJECT_PATH}/totalhours_coding.csv", newline="", mode="a") as csv_hours:
         writer = csv.writer(csv_hours, delimiter=',', quotechar="'")
         writer.writerow(['"coding session"', 2])
 
@@ -57,20 +61,20 @@ scroll_amount = 20
 
 start_time = pygame.time.get_ticks()
 
-WAV_WORKOUT_STARTED = pygame.mixer.Sound('./sounds/workout_session_started.wav')
+WAV_WORKOUT_STARTED = pygame.mixer.Sound(f'{PROJECT_PATH}/sounds/workout_session_started.wav')
 WAV_WORKOUT_STARTED.set_volume(0.5)
-WAV_WORKOUT_FINISHED = pygame.mixer.Sound('./sounds/workout_session_finished.wav')
+WAV_WORKOUT_FINISHED = pygame.mixer.Sound(f'{PROJECT_PATH}/sounds/workout_session_finished.wav')
 WAV_WORKOUT_FINISHED.set_volume(0.5)
-WAV_PUSHUPS = pygame.mixer.Sound('./sounds/pushups.wav')
+WAV_PUSHUPS = pygame.mixer.Sound(f'{PROJECT_PATH}/sounds/pushups.wav')
 WAV_PUSHUPS.set_volume(0.7)
-WAV_SITUPS = pygame.mixer.Sound('./sounds/situps.wav')
+WAV_SITUPS = pygame.mixer.Sound(f'{PROJECT_PATH}/sounds/situps.wav')
 WAV_SITUPS.set_volume(0.7)
-WAV_SQUATS = pygame.mixer.Sound('./sounds/squats.wav')
+WAV_SQUATS = pygame.mixer.Sound(f'{PROJECT_PATH}/sounds/squats.wav')
 WAV_SQUATS.set_volume(0.7)
-WAV_REST = pygame.mixer.Sound('./sounds/rest.wav')
+WAV_REST = pygame.mixer.Sound(f'{PROJECT_PATH}/sounds/rest.wav')
 WAV_REST.set_volume(0.7)
 
-exercises = ["pushups","situps","squats"]
+exercises = ["pushups"]
 tts_table = {
     "pushups":WAV_PUSHUPS,
     "situps":WAV_SITUPS,
@@ -158,7 +162,7 @@ class Clock():
         if ((self.seconds % self.exercise_duration_seconds) == 0) and milliseconds > 970 and not self.finished:
             # if self.exercise != "rest":
             tts_table[self.exercise].play()
-        if ((self.seconds == 50) and milliseconds < 50) and not self.finished:
+        if (((self.seconds == 50) or (self.seconds == 40)) and milliseconds < 50) and not self.finished:
             self.rest()
             tts_table["rest"].play()
         
