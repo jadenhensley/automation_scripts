@@ -11,7 +11,6 @@ import csv
 import subprocess
 
 WORKOUT_PROGRAM_PATH='P:\\automation_scripts\workout_timer_tts\workout.py'
-# 'P:\\automation_scripts\programmable_timer\workout_timer_tts'
 MEDITATION_PROGRAM_PATH='P:\libre_mind_meditation\libremind.py'
 LOGGER_PROGRAM_PATH=''
 BACKGROUND_NOISES_PROGRAM_PATH=''
