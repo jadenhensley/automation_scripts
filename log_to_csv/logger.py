@@ -37,7 +37,7 @@ def log_food(food, date=murican_today):
         writer = csv.writer(csv_food, delimiter=',', quotechar="'")
         writer.writerow([f'"{food}"', f'"{date}"'])
 
-def log_exercise(type_of_exercise="HIIT Workout", minutes_spent=10, date=murican_today):
+def log_exercise(type_of_exercise="HIIT 20sec intervals", minutes_spent=10, date=murican_today):
     with open(f"{PROJECT_PATH}fitness_log.csv", newline="", mode="a") as csv_fitness:
         writer = csv.writer(csv_fitness, delimiter=',', quotechar="'")
         writer.writerow([f'"{type_of_exercise}"',f'"{minutes_spent}"',f'"{date}"'])
