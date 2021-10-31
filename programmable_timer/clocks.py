@@ -183,7 +183,7 @@ class Clock():
     def log_time(self):
         log_code = subprocess.run(f"python {LOGGER_PROGRAM_PATH} code {(self.length_code_minutes * self.total_sessions) // 60}", stdout=subprocess.PIPE, shell=True)
         
-        log_workout = subprocess.run(f"python {LOGGER_PROGRAM_PATH} exercise {self.length_workout_minutes * self.total_sessions}", stdout=subprocess.PIPE, shell=True)
+        log_workout = subprocess.run(f"python {LOGGER_PROGRAM_PATH} exercise hiit_workout {self.length_workout_minutes * self.total_sessions}", stdout=subprocess.PIPE, shell=True)
         log_meditation = subprocess.run(f"python {LOGGER_PROGRAM_PATH} meditation mindfulness {self.length_meditation_minutes * self.total_sessions}", stdout=subprocess.PIPE, shell=True)
         return "done"
 
