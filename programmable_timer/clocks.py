@@ -169,7 +169,7 @@ class Clock():
             self.seconds = (time_since_enter // 1000) % 60
             self.total_minutes = (time_since_enter // 1000 // 60)
             self.minutes = (time_since_enter // 1000 // 60) % 60
-            self.hours = self.minutes // 60
+            self.hours = self.total_minutes // 60
 
             if self.session_count == 0:
                 self.code_session_finished = True

@@ -74,7 +74,7 @@ WAV_SQUATS.set_volume(0.7)
 WAV_REST = pygame.mixer.Sound(f'{PROJECT_PATH}/sounds/rest.wav')
 WAV_REST.set_volume(0.7)
 
-exercises = ["pushups"]
+exercises = ["pushups","situps","squats"]
 tts_table = {
     "pushups":WAV_PUSHUPS,
     "situps":WAV_SITUPS,
@@ -211,5 +211,5 @@ def main():
 # read_csv()
 # append_row()
 
-main()    
+main()
 pygame.quit()
