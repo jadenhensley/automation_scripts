@@ -170,8 +170,11 @@ class Clock():
             self.total_minutes = (time_since_enter // 1000 // 60)
             self.minutes = (time_since_enter // 1000 // 60) % 60
             self.hours = self.minutes // 60
+
+            if self.session_count == 0:
+                self.code_session_finished = True
             
-            if (self.total_minutes % self.length_code_minutes == 0) and (self.milliseconds < 30) and (self.code_session_finished == False):
+            if (self.total_minutes > 0) and (self.total_minutes % self.length_code_minutes == 0) and (self.milliseconds < 30) and (self.code_session_finished == False):
                 if self.session_count < self.total_sessions:
                     self.code_session_finished = True
                 else:
