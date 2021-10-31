@@ -6,8 +6,12 @@ import sys, getopt
 today = date.today()
 murican_today = today.strftime("%m/%d/%y")
 
+import path_util  # needed for getting path of project media files, when script is ran remotely.
 
-def read_csv(name="./totalhours_coding.csv"):
+PROJECT_PATH = path_util.get_project_directory()
+print(PROJECT_PATH)
+
+def read_csv(name=f"{PROJECT_PATH}totalhours_coding.csv"):
     with open(name, newline="", mode="r") as csv_hours:
         reader = csv.reader(csv_hours, delimiter=',', quotechar="'")
         for row in reader:
@@ -18,28 +22,28 @@ def log_code(hours_spent):
         int(hours_spent)
     except:
         print("must provide integer value of hours")
-    with open("./totalhours_coding.csv", newline="", mode="a") as csv_hours:
+    with open(f"{PROJECT_PATH}/coding_log.csv", newline="", mode="a") as csv_hours:
         writer = csv.writer(csv_hours, delimiter=',', quotechar="'")
-        writer.writerow(['"coding session"', hours_spent])
+        writer.writerow([hours_spent, f'"{date}"'])
 
 
 def log_meditation(type_of_meditation="Meditation", minutes_spent=15, date=murican_today):
-    with open("./meditation_log.csv", newline="", mode="a") as csv_meditation:
+    with open(f"{PROJECT_PATH}meditation_log.csv", newline="", mode="a") as csv_meditation:
         writer = csv.writer(csv_meditation, delimiter=',', quotechar="'")
         writer.writerow([f'"{type_of_meditation}"', minutes_spent, f'"{date}"'])
 
 def log_food(food, date=murican_today):
-    with open("./food_log.csv", newline="", mode="a") as csv_food:
+    with open(f"{PROJECT_PATH}food_log.csv", newline="", mode="a") as csv_food:
         writer = csv.writer(csv_food, delimiter=',', quotechar="'")
         writer.writerow([f'"{food}"', f'"{date}"'])
 
 def log_exercise(type_of_exercise="HIIT Workout", minutes_spent=10, date=murican_today):
-    with open("./fitness_log.csv", newline="", mode="a") as csv_fitness:
+    with open(f"{PROJECT_PATH}fitness_log.csv", newline="", mode="a") as csv_fitness:
         writer = csv.writer(csv_fitness, delimiter=',', quotechar="'")
         writer.writerow([f'"{type_of_exercise}"',f'"{minutes_spent}"',f'"{date}"'])
 
 def log_project(project_name, date=murican_today):
-    with open("./projects_timeline.csv", newline="", mode="a") as csv_projects:
+    with open(f"{PROJECT_PATH}projects_timeline.csv", newline="", mode="a") as csv_projects:
         writer = csv.writer(csv_projects, delimiter=',', quotechar="'")
         writer.writerow([f'"{project_name}"',f'"{date}"'])
 

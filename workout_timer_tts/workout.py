@@ -94,6 +94,7 @@ class Clock():
         self.exercise = random.choice(exercises)
         self.rest_finished = 0
 
+
     def pick_exercise(self):
         global exercises, tts_table
         self.exercise = random.choice(exercises)
