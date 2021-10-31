@@ -19,7 +19,7 @@ def git_add_all():
     git_add = subprocess.run("git add *", stdout=subprocess.PIPE, shell=True)
 
 
-def git_commit_all(commit_message="got program automation working"):
+def git_commit_all(commit_message="updating project files"):
     git_add_all()
     print("added untracked files.")
     git_commit = subprocess.run(f'git commit -m "{commit_message}"', stdout=subprocess.PIPE, shell=True)

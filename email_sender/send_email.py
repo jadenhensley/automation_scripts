@@ -96,6 +96,3 @@ def send_break_finished_email():
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.send_message(msg)
-
-send_break_finished_email()
-send_water_reminder_email()
